@@ -19,21 +19,6 @@ const isEven = (number) => {
 
 console.log(isEven(1));
 
-// const countBs = (str) => {
-//   let char = "B";
-//   let i = 0;
-//   let count = 0;
-//   while (i < str.length) {
-//     if (str[i] === char) {
-//       count += 1;
-//     }
-//     i++;
-//   }
-//   return count;
-// };
-
-// console.log(countBs("hubBbBbABB"));
-
 const countChars = (str, char) => {
   let i = 0;
   let count = 0;
