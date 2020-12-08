@@ -31,3 +31,15 @@ const avg = (array) => (array.reduce((a, b) => a + b) / array.length);
 
 console.log(Math.round(avg(SCRIPTS.filter(s => s.living).map(s => s.year))))
 ```
+
+### Array.reduce(array, combiningFunction, startValue) - builds a value by repeatedly taking a single element from the array and combining it with the current value
+
+```
+const reduce = (arr, combine, start) => {
+    let current = start;
+    for (let el of arr) {
+        current = combine(current, element);
+    }
+    return current;
+}
+```
