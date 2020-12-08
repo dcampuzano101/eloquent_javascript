@@ -77,21 +77,52 @@ killerRabbit.speak('GRR');
 - killerRabbit = instance of protoRabbit
   - .type === available to local instance
 
-# Classes - JavaScripts prototype system can be interpreted as a somewhat informal take on an object-oriented concept called _classes_
+# Classes
 
-### Prototypes are useful for defining properties that all instances of a class share ie ( .speak .run .hop )
+## JavaScripts prototype system can be interpreted as a somewhat informal take on an object-oriented concept called _classes_
 
-### In order to create an instance of a given class, you have to make an object that derives from the proper prototype, but you ALSO have to it, itself, has all the properties that instances of this class are supposed to have.
+- Prototypes are useful for defining properties that all instances of a class share ie ( .speak .run .hop )
 
-### All functions / constructors automatically have a property called .prototype, by default it is {}, you can replace the value, add to it
+- In order to create an instance of a given class, you have to make an object that derives from the proper prototype, but you ALSO have to it, itself, has all the properties that instances of this class are supposed to have.
+
+- All functions / constructors automatically have a property called .prototype, by default it is {}, you can replace the value, add to it
+
+## Class Notation
+
+- Class declarations only allow methods -- properties that hold functions. This can be
 
 ```
-Rabbit(type) {
-    this.type = type;
+class Rabbit {
+    constructor(type) {
+        this.type = type;
+    }
+
+    speak (line) {
+        console.log(`the ${this.type} rabbit says ${line})
+    }
 }
-Rabbit.prototype.speak = (line) => { console.log( `The ${this.type} rabbit says ${line}`)}
-
-const whiteRabbit = new Rabbit('white');
-whiteRabbit.speak('yoo');
-// the white rabbit says yoo
 ```
+
+### Overriding derived properties from Prototype
+
+```
+Rabbit.prototype.teeth = 'small';
+console.log(killerRabbit.teeth); // small
+
+killerRabbit.teeth = 'long, sharp, and bloody';
+console.log(killerRabbit.teeth); // long, sharp, and bloody
+
+console.log(blackRabbit.teeth); // small
+console.log(whiteRabbit.teeth); // small
+```
+
+- Overriding properties can be used to express exceptional properties in instances of a more generic class of objects, while letting the non-exceptional objects take a standard value from their prototype.
+- Overriding gives different toString() methods to different values
+
+```
+console.log(Object.prototype.toString === Array.prototype.toString) // false
+console.log([1, 2].toString()) // '1, 2';
+console.log(Object.prototype.toString.call([1, 2])) // [object Array];
+```
+
+# Maps
