@@ -43,3 +43,5 @@ const reduce = (arr, combine, start) => {
     return current;
 }
 ```
+
+### Predicate Function - A predicate function is a function that takes one value as input and returns true / false based on whether the value satisfies the condition. isEven() is a predicate function.
